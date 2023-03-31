@@ -1,79 +1,174 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Xinzore</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>/* Genel stiller */
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GitHub.io Sayfam</title>
+  <style>
+ * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.4;
-  color: #333;
-  margin: 0;
-  padding: 0;
+	font-family: 'Roboto', sans-serif;
 }
 
-/* Başlık stilleri */
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
+	background-color: black;
+	color: white;
+	padding: 20px;
 }
 
-header h1 {
-  margin: 0;
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+	display: flex;
 }
 
-nav li {
-  display: inline-block;
-  margin-right: 20px;
+nav ul li {
+	list-style: none;
+	margin-left: 20px;
 }
 
-nav li:last-child {
-  margin-right: 0;
+nav ul li a {
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
 }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
+nav ul li a:hover {
+	color: #00FF00;
 }
 
-/* Ana içerik stil */
 main {
-  padding: 20px;
+	margin: 20px;
 }
 
-/* Altbilgi stilleri */
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+section {
+	margin-bottom: 50px;
 }
-</style>
-  </head>
-  <body>
-    <header>
-      <h1>Xinzore</h1>
-      <nav>
-        <ul>
-          <li><a href="#">Anasayfa</a></li>
-          <li><a href="#">Hakkında</a></li>
-          <li><a href="#">İletişim</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <p>Merhaba, github web sayfama hoş geldiniz!</p>
-    </main>
-    <footer>
-      <p>Telif Hakkı © 2023</p>
-    </footer>
-  </body>
+
+h2 {
+	font-size: 24px;
+	color: black;
+	margin-bottom: 20px;
+}
+
+p {
+font-size: 18px;
+color: gray;
+margin-bottom: 20px;
+}
+
+ul {
+display: flex;
+flex-wrap: wrap;
+list-style: none;
+}
+
+li {
+flex-basis: calc(33.33% - 20px);
+margin-right: 20px;
+margin-bottom: 20px;
+}
+
+li:last-child {
+margin-right: 0;
+}
+
+img {
+width: 100%;
+height: auto;
+}
+
+h3 {
+font-size: 20px;
+color: black;
+margin-top: 10px;
+}
+
+footer {
+background-color: #00FF00;
+color: white;
+padding: 10px;
+text-align: center;
+}
+
+@media (max-width: 768px) {
+nav {
+flex-direction: column;
+}
+
+nav ul {
+	margin-top: 20px;
+}
+
+nav ul li {
+	margin-left: 0;
+	margin-bottom: 10px;
+}
+
+li {
+	flex-basis: calc(50% - 10px);
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+li:last-child {
+	margin-right: 0;
+}
+}  
+  </style>
+</head>
+<body>
+	<header>
+		<nav>
+			<h1>GitHub.io Sayfam</h1>
+			<ul>
+				<li><a href="#">Anasayfa</a></li>
+				<li><a href="#">Profilim</a></li>
+				<li><a href="#">Projelerim</a></li>
+				<li><a href="#">İletişim</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<h2>Benim Hakkımda</h2>
+			<p>Benim adım John Doe ve bir yazılım geliştiriciyim. 5 yıldır bu alanda çalışıyorum ve birçok projeye imza attım. En son projem, şu an GitHub'da yayında olan bir web uygulamasıdır.</p>
+			<p>Benimle iletişime geçmek isterseniz, aşağıdaki formu doldurabilirsiniz.</p>
+		</section>
+		<section>
+			<h2>Projelerim</h2>
+			<ul>
+				<li>
+					<a href="#">
+						<img src="https://via.placeholder.com/150" alt="Proje 1">
+						<h3>Proje 1</h3>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="https://via.placeholder.com/150" alt="Proje 2">
+						<h3>Proje 2</h3>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="https://via.placeholder.com/150" alt="Proje 3">
+						<h3>Proje 3</h3>
+					</a>
+				</li>
+			</ul>
+		</section>
+	</main>
+	<footer>
+		<p>Telif Hakkı © 2023 GitHub.io Sayfam. Tüm Hakları Saklıdır.</p>
+	</footer>
+</body>
 </html>
