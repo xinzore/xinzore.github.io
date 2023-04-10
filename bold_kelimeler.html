@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.tiny.cloud/1/vn2rqjddbaig7nzi1oxqxomehcc7rl3fq2ks844ssljxeq5s/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+        selector: "textarea",
+        plugins: "advlist autolink lists link image charmap print preview anchor",
+        toolbar:
+          "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter | link image media pageembed | code",
+        menubar: "file edit view insert format tools table help",
+      });
+
+      function filterBold() {
+        var text = tinymce.get("mytextarea").getContent();
+        var div = document.createElement("div");
+        div.innerHTML = text;
+        var bolds = div.querySelectorAll("b, strong");
+        var boldTexts = "";
+        for (var i = 0; i < bolds.length; i++) {
+          boldTexts += bolds[i].textContent + "<br>";
+        }
+        document.getElementById("result").innerHTML = boldTexts;
+      }
+    </script>
+  </head>
+  <body>
+    <textarea id="mytextarea"></textarea>
+    <br />
+    <button onclick="filterBold()">Bold Kelimeleri Filtrele</button>
+    <br />
+    <div id="result"></div>
+  </body>
+</html>
