@@ -36,9 +36,21 @@
         document.getElementById("result").innerHTML = boldTexts;
       }
     </script>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+</style>
   </head>
 
   <body>
@@ -136,7 +148,7 @@
         </div>
         <div class="detail">
           <div class="detail-t">
-          <button onclick="filterBold()" type="button" class="btn btn-outline-success">Bold Kelimeleri Filtrele</button>
+          <button onclick="filterBold()" class="button button1">Bold Kelimeleri Filtrele</button>
           <br />
           <div id="result"></div>
                 </div>
