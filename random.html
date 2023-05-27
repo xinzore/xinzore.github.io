@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <title>Rastgele Şifre Oluşturucu</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function generatePassword() {
+        var length = document.getElementById("length").value;
+        var uppercaseChecked = document.getElementById("uppercase").checked;
+        var lowercaseChecked = document.getElementById("lowercase").checked;
+        var numbersChecked = document.getElementById("numbers").checked;
+        var specialChecked = document.getElementById("special").checked;
+  
+        var characterSet = "";
+        var password = "";
+  
+        if (uppercaseChecked) {
+          characterSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        }
+        if (lowercaseChecked) {
+          characterSet += "abcdefghijklmnopqrstuvwxyz";
+        }
+        if (numbersChecked) {
+          characterSet += "0123456789";
+        }
+        if (specialChecked) {
+          characterSet += "!@#$%^&*()_+-=[]{}|;:,.<>/?";
+        }
+  
+        if (characterSet.length === 0) {
+          alert("En az bir karakter kümesi seçmelisiniz!");
+          return;
+        }
+  
+        if (length < 8 || length > 50) {
+          alert("Şifre uzunluğu en az 8, en fazla 50 karakter olmalıdır!");
+          return;
+        }
+  
+        for (var i = 0; i < length; i++) {
+          var randomIndex = Math.floor(Math.random() * characterSet.length);
+          password += characterSet[randomIndex];
+        }
+  
+        document.getElementById("password").value = password;
+      }
+  
+      function copyPassword() {
+        var passwordInput = document.getElementById("password");
+        passwordInput.select();
+        passwordInput.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("Şifre kopyalandı: " + passwordInput.value);
+      }
+    </script>
+  </head>
+  <body class="p-3 m-0 border-0 bd-example">
+    <div class="form-check form-switch">
+      <br><br>
+    <h2>Rastgele Şifre Oluşturucu</h2>
+    <p>
+		<div style="max-width:80px" class="col-md-2">
+			Uzunluk:
+			<input class="form-control" type="number" id="length" min="8" max="50" value="10">
+		</div>
+    </p>
+    <p>
+      <input class="form-check-input" type="checkbox" id="uppercase" checked>
+      <label for="uppercase">Büyük Harfler</label>
+    </p>
+    <p>
+      <input class="form-check-input" type="checkbox" id="lowercase" checked>
+      <label for="lowercase">Küçük Harfler</label>
+    </p>
+    <p>
+      <input class="form-check-input" type="checkbox" id="numbers" checked>
+      <label for="numbers">Sayılar</label>
+    </p>
+    <p>
+      <input class="form-check-input" type="checkbox" id="special" checked>
+      <label for="special">Özel Karakterler</label>
+    </p>
+      
+    <button class="btn btn-primary" onclick="generatePassword()">Şifre Oluştur</button>
+        <br><br>
+	<div style="max-width:300px" class="input-group mb-3">
+		<input class="form-control" type="text" id="password" readonly>
+		<button class="btn btn-primary" onclick="copyPassword()">Kopyala</button>
+	</div>
+  </div>
+    <script>generatePassword()</script>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+const options = {
+  bottom: '64px', // default: '32px'
+  right: '32px', // default: '32px'
+  left: 'unset', // default: 'unset'
+  time: '0.8s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#3E7D2F',  // default: '#100f2c'
+  buttonColorLight: '#3E7D2F', // default: '#fff'
+  saveInCookies: true, // default: true,
+  label: '&#127771', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
+  
+</script>
+  </body>
+</html>
