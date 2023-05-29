@@ -8,54 +8,63 @@
     <title>Rastgele Şifre Oluşturucu</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      function generatePassword() {
-        var length = document.getElementById("length").value;
-        var uppercaseChecked = document.getElementById("uppercase").checked;
-        var lowercaseChecked = document.getElementById("lowercase").checked;
-        var numbersChecked = document.getElementById("numbers").checked;
-        var specialChecked = document.getElementById("special").checked;
-  
-        var characterSet = "";
-        var password = "";
-  
-        if (uppercaseChecked) {
-          characterSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        }
-        if (lowercaseChecked) {
-          characterSet += "abcdefghijklmnopqrstuvwxyz";
-        }
-        if (numbersChecked) {
-          characterSet += "0123456789";
-        }
-        if (specialChecked) {
-          characterSet += "!@#$%^&*()_+-=[]{}|;:,.<>/?";
-        }
-  
-        if (characterSet.length === 0) {
-          alert("En az bir karakter kümesi seçmelisiniz!");
-          return;
-        }
-  
-        if (length < 8 || length > 50) {
-          alert("Şifre uzunluğu en az 8, en fazla 50 karakter olmalıdır!");
-          return;
-        }
-  
-        for (var i = 0; i < length; i++) {
-          var randomIndex = Math.floor(Math.random() * characterSet.length);
-          password += characterSet[randomIndex];
-        }
-  
-        document.getElementById("password").value = password;
+    function generatePassword() {
+      var length = document.getElementById("length").value;
+      var uppercaseChecked = document.getElementById("uppercase").checked;
+      var lowercaseChecked = document.getElementById("lowercase").checked;
+      var numbersChecked = document.getElementById("numbers").checked;
+      var specialChecked = document.getElementById("special").checked;
+
+      var characterSet = "";
+      var password = "";
+
+      if (uppercaseChecked) {
+        characterSet += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        password += getRandomCharacter("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
       }
-  
-      function copyPassword() {
-        var passwordInput = document.getElementById("password");
-        passwordInput.select();
-        passwordInput.setSelectionRange(0, 99999);
-        document.execCommand("copy");
-        alert("Şifre kopyalandı: " + passwordInput.value);
+      if (lowercaseChecked) {
+        characterSet += "abcdefghijklmnopqrstuvwxyz";
+        password += getRandomCharacter("abcdefghijklmnopqrstuvwxyz");
       }
+      if (numbersChecked) {
+        characterSet += "0123456789";
+        password += getRandomCharacter("0123456789");
+      }
+      if (specialChecked) {
+        characterSet += "!@#$%^&*()_+-=[]{}|;:,.<>/?";
+        password += getRandomCharacter("!@#$%^&*()_+-=[]{}|;:,.<>/?");
+      }
+
+      if (characterSet.length === 0) {
+        alert("En az bir karakter kümesi seçmelisiniz!");
+        return;
+      }
+
+      if (length < 8 || length > 50) {
+        alert("Şifre uzunluğu en az 8, en fazla 50 karakter olmalıdır!");
+        return;
+      }
+
+      for (var i = password.length; i < length; i++) {
+        var randomIndex = Math.floor(Math.random() * characterSet.length);
+        password += characterSet[randomIndex];
+      }
+
+      document.getElementById("password").value = password;
+    }
+
+    function getRandomCharacter(characterSet) {
+      var randomIndex = Math.floor(Math.random() * characterSet.length);
+      return characterSet[randomIndex];
+    }
+
+    function copyPassword() {
+      var passwordInput = document.getElementById("password");
+      passwordInput.select();
+      passwordInput.setSelectionRange(0, 99999);
+      document.execCommand("copy");
+      alert("Şifre kopyalandı: " + passwordInput.value);
+    }
     </script>
   </head>
   <body class="p-3 m-0 border-0 bd-example">
