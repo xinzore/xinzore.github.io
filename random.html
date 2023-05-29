@@ -40,7 +40,7 @@
         return;
       }
 
-      if (length < 8 || length > 50) {
+      if (length < 4 || length > 50) {
         alert("Şifre uzunluğu en az 8, en fazla 50 karakter olmalıdır!");
         return;
       }
@@ -71,9 +71,8 @@
     <div class="form-check form-switch">
      <h2>Rastgele Şifre Oluşturucu</h2>
     <p>
-		<div style="max-width:80px" class="col-md-2">
-			Uzunluk:
-			<input class="form-control" type="number" id="length" min="8" max="50" value="10">
+		<div style="max-width:300px" class="col-md-2">
+			<input class="form-range" type="range" id="length" min="4" max="50" value="10" oninput="this.nextElementSibling.value = this.value">Krakter Sayısı: <output>10</output>
 		</div>
     </p>
     <p>
