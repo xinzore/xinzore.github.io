@@ -7,6 +7,25 @@
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <title>Rastgele Şifre Oluşturucu</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+body {
+    background-color: white; /* Varsayılan arka plan rengi */
+    color: black; /* Varsayılan metin rengi */
+    transition: background-color 0.3s, color 0.3s; /* Animasyon efekti için geçiş süresi */
+}
+
+.dark-mode {
+    background-color: black !important; /* !important kullanılması mevcut stilleri geçersiz kılmak içindir */
+    color: white !important;
+}
+.btn-outline-dark {
+	position: absolute;
+    top: 15px; /* İstediğiniz boşluk değerini ayarlayabilirsiniz. */
+    left: 5px; /* İstediğiniz boşluk değerini ayarlayabilirsiniz. */
+
+}
+</style>
+
     <script>
     function generatePassword() {
       var length = document.getElementById("length").value;
@@ -100,25 +119,41 @@
 	</div>
   </div>
     <script>generatePassword()</script>
-<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <button class="btn btn-outline-dark" id='darkModeToggle'>&#128161</button>
 <script>
-const options = {
-  bottom: '64px', // default: '32px'
-  right: '32px', // default: '32px'
-  left: 'unset', // default: 'unset'
-  time: '0.8s', // default: '0.3s'
-  mixColor: '#fff', // default: '#fff'
-  backgroundColor: '#fff',  // default: '#fff'
-  buttonColorDark: 'linear-gradient(135deg,#0d6efd 0,#fd7e14 100%)',  // default: '#100f2c'
-  buttonColorLight: 'linear-gradient(135deg,#fd7e14 0,#0d6efd 100%)', // default: '#fff'
-  saveInCookies: true, // default: true,
-  label: '&#128161', // default: ''
-  autoMatchOsTheme: true // default: true
-  }
+document.addEventListener('DOMContentLoaded', function () {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const darkModeClass = 'dark-mode';
+    const storageKey = 'darkModeEnabled';
 
-const darkmode = new Darkmode(options);
-darkmode.showWidget();
-  
+    // Sayfa yüklendiğinde kontrol et ve temayı uygula
+    if (localStorage.getItem(storageKey) === 'true') {
+        enableDarkMode();
+    }
+
+    // Tema değiştirme butonu click olayı
+    darkModeToggle.addEventListener('click', function () {
+        if (body.classList.contains(darkModeClass)) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+    });
+
+    // Temayı aktif hale getir
+    function enableDarkMode() {
+        body.classList.add(darkModeClass);
+        localStorage.setItem(storageKey, 'true');
+    }
+
+    // Temayı deaktif hale getir
+    function disableDarkMode() {
+        body.classList.remove(darkModeClass);
+        localStorage.setItem(storageKey, 'false');
+    }
+});
+ 
 </script>
-  </body>
+ </body>
 </html>
